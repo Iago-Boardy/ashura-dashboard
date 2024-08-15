@@ -1,0 +1,240 @@
+/* Estilos gerais */
+body {
+    margin: 0;
+    font-family: "Mulish", sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Estilos da barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brand {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.brand h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+nav li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+nav li a:hover, nav li.active a {
+    background-color: #f0f0f0;
+}
+
+.badge {
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.upgrade {
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.upgrade a {
+    text-decoration: none;
+    color: #FFFF;
+}
+
+.upgrade button {
+    font-family: "Mulish", sans-serif;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.upgrade button:hover {
+    background-color: #343232;
+}
+
+/* Estilos do conteúdo principal */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header input {
+    padding: 10px;
+    width: 700px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.user-icon {
+    font-size: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilos do dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: auto; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content i {
+    margin-right: 5px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    gap: 4px;
+    right: 0;
+}
+
+.dropbtn {
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+
+/* Estilos das seções */
+.inventory {
+    background-color: #fff;
+    padding: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.end-home {
+    background-color: #fff;
+    padding: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 35px;
+}
+
+.feature {
+    text-align: center;
+}
+
+.feature i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+
+.inventory h1 {
+    font-size: 32px;
+    margin-left: 20px;
+}
+
+.inventory p {
+    margin-left: 20px;
+}
+
+.empty-state p {
+    margin: 10px 0;
+}
+
+.empty-state button {
+    padding: 10px 20px;
+    font-family: "Mulish", sans-serif;
+    border: none;
+    background-color: #000;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+.empty-state button a {
+    text-decoration: none;
+    color: #FFFF;
+}
+
+.empty-state button:hover {
+    background-color: #343232;
+}
+
+
