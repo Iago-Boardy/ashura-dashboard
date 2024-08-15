@@ -29,12 +29,13 @@ The design of the dashboard was inspired by ShadCN.
 
 ## 📸 Project Screenshots
 
-<img src="https://i.imgur.com/WvTkUWk.png" alt="project-screenshot" width="1920" height="1080"/>
+<img src="https://i.imgur.com/WvTkUWk.png" alt="project-screenshot" width="1200"/>
 
-<img src="https://i.imgur.com/Nk8Cho2.png" alt="project-screenshot" width="1920" height="1080"/>
+<img src="https://i.imgur.com/Nk8Cho2.png" alt="project-screenshot" width="1200"/>
 
-<img src="https://i.imgur.com/y0vFUbI.png" alt="project-screenshot" width="1920" height="1080"/>
+<img src="https://i.imgur.com/y0vFUbI.png" alt="project-screenshot" width="1200"/>
 
-<img src="https://i.imgur.com/Tw3JkBQ.png" alt="project-screenshot" width="1920" height="1080"/>
+<img src="https://i.imgur.com/Tw3JkBQ.png" alt="project-screenshot" width="1200"/>
+
 
 ---
