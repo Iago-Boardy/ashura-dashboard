@@ -1,6 +1,6 @@
 <?php 
 include ("connection.php");
-
+AAAAAAAAAAAAAA
 session_start();
 
 $error_message = '';
