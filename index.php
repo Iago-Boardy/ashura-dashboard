@@ -66,7 +66,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
                 <button type="submit">Login</button>
             </form>
 
-            <p>Don't have an account? <a href="cadastrar.html">Sign up</a></p>
+            <p>Don't have an account? <a href="cadastrar.php">Sign up</a></p>
 
         </div>
     </div>
