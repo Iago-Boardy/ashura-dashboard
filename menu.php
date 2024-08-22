@@ -48,7 +48,7 @@ include("protect.php");
                 <div class="dropdown">
                     <button class="dropbtn"><i class="fas fa-user"></i> </button>
                     <div class="dropdown-content">
-                        <a href="usuario.html"><i class="fas fa-cog"></i>Configurações</a>
+                        <a href="usuario.php"><i class="fas fa-cog"></i>Configurações</a>
                         <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
                     </div>
                 </div>

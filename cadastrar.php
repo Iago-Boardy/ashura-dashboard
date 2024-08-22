@@ -1,31 +1,30 @@
 <?php 
-if (isset($_POST["submit"])) {
+    if (isset($_POST["submit"])) {
 
-    include_once("connection.php");
+        include_once("connection.php");
 
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirm-password"];
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $confirmPassword = $_POST["confirm-password"];
 
-    if ($confirmPassword != $password) {
+        if ($confirmPassword != $password) {
 
-        $error_message = "ERRO - As senhas estão diferentes!";
+            $error_message = "ERRO - As senhas estão diferentes!";
 
-    } else {
+        } else {
 
-        $result = mysqli_query($conn, "INSERT INTO usuarios
-                                   (nome, email, senha) VALUES
-                                   ('$name', '$email', '$password')");
+            $result = mysqli_query($conn, "INSERT INTO usuarios
+                                    (nome, email, senha) VALUES
+                                    ('$name', '$email', '$password')");
 
 
-        $good_message = "Sua conta foi criada com sucesso!";
+            $good_message = "Sua conta foi criada com sucesso!";
         //header("Location: index.php");
         //exit();
+        }
+        
     }
-
-    
-}
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +63,7 @@ if (isset($_POST["submit"])) {
         </div>
     </div>
 
-    <!-- Container for error messages -->
+    
     <div id="error-message" class="error-message <?php if($error_message) echo 'show'; ?>">
         <?php echo htmlspecialchars($error_message); ?>
     </div>
