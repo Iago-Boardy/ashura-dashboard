@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
     $result = $stmt->execute();
 
     if ($result) {
-        $good_message = "Sua conta foi criada com sucesso!";
+        header("Location: clientes.php");
     } else {
         $error_message = "Ocorreu um erro ao criar a conta: " . $conn->error;
     }

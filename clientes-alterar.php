@@ -2,60 +2,40 @@
 session_start(); 
 include("protect.php");
 
-$good_message = "";
-$error_message = "";
+    if (!empty($_GET["id"])) {
+        include_once("connection.php");
 
-$cliente = null; // Inicializa a variável para armazenar os dados do cliente
+        $id = $_GET["id"];
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+        $sqlSelect = "SELECT * FROM clientes 
+                      WHERE id = '$id'";
+        
+        $result = $conn-> query($sqlSelect); //Aqui tem que ver certinho, mas basicamente verificamos algo na connection conn
+        
+        if ($result->num_rows > 0) {
 
-    include_once("connection.php");
+            while ($row = $result->fetch_assoc($result)) {
+                $id = $row["id"];
+                $nome = $rowT["name"];
+                $idade = $row["idade"];
+                $logradouro = $row["logradouro"];
+                $complemento = $rowT["complemento"];
+                $bairro = $row["bairro"];
+                $cep = $row["cep"];
+                $cidade = $row["cidade"];
+                $uf = $row["uf"];
+                $email = $row["email"];
+            }
 
-    $sql = "SELECT * FROM clientes WHERE id = '$id";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+            
+        }
+        else {
+            header("clientes.php");
+        }
 
-    if ($result->num_rows > 0) {
-        $cliente = $result->fetch_assoc();
-    } else {
-        $error_message = "Cliente não encontrado!";
     }
 
-    $stmt->close();
-    $conn->close();
-}
 
-if (isset($_POST["submit"])) {
-    include_once("connection.php");
-
-    $id = $_POST["id"];
-    $nome = $_POST["name"];
-    $idade = $_POST["idade"];
-    $logradouro = $_POST["logradouro"];
-    $complemento = $_POST["complemento"];
-    $bairro = $_POST["bairro"];
-    $cep = $_POST["cep"];
-    $cidade = $_POST["cidade"];
-    $uf = $_POST["uf"];
-    $email = $_POST["email"];
-
-    $sql = "UPDATE clientes SET nome = ?, idade = ?, logradouro = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, uf = ?, email = ? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sisssssssi", $nome, $idade, $logradouro, $complemento, $bairro, $cep, $cidade, $uf, $email, $id);
-    $result = $stmt->execute();
-
-    if ($result) {
-        $good_message = "Cliente atualizado com sucesso!";
-    } else {
-        $error_message = "Ocorreu um erro ao atualizar o cliente: " . $conn->error;
-    }
-
-    $stmt->close();
-    $conn->close();
-}
 ?>
 
 <!DOCTYPE html>
@@ -106,66 +86,66 @@ if (isset($_POST["submit"])) {
 
             <section class="section-1">
                 <a href="clientes.php" class="back-button"><i class="fas fa-arrow-left"></i></a>
-
-                <div class="intro-content">
-                    <div class="intro-text">
-                        <h1>Alterar Clientes</h1>
-                        <p>Altere ou exclua os clientes a seguir:</p>
-                    </div>
-                </div>
-                
                 <div class="form-container">
-                    <form id="client-form" action="" method="POST">
-                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($cliente['id'] ?? ''); ?>">
+                    <form id="client-form" action="saveEditClientes.php" method="POST">
+
+                        <div class="intro-content">
+                            <div class="intro-text">
+                                <h1>Alterar Clientes</h1>
+                                <p>Altere ou exclua os clientes a seguir:</p>
+                            </div>
+                            <div class="table-buttons">
+                                <button id="clear-button" type="button"><i class="fas fa-trash"></i> Excluir</button>
+                                <button id="submit-button" type="submit" name="update"><i class="fas fa-save"></i> Salvar</button>   
+                            </div>
+                        </div>
+                
+            
                         <div class="form-row">
                             <div class="form-group label-full-width spacing">
                                 <label for="name">Nome</label>
-                                <input type="text" id="name" name="name" placeholder="Nome" value="<?php echo htmlspecialchars($cliente['nome'] ?? ''); ?>" required>
+                                <input type="text" id="name" name="name" placeholder="Nome" value="<?php echo $nome; ?>" required>
                             </div>
                             <div class="form-group label-small">
                                 <label for="idade">Idade</label>
-                                <input type="number" id="idade" name="idade" placeholder="Idade" value="<?php echo htmlspecialchars($cliente['idade'] ?? ''); ?>" required>
+                                <input type="number" id="idade" name="idade" placeholder="Idade" value="<?php echo $idade; ?>" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group input-full-width">
                                 <label for="logradouro">Logradouro</label>
-                                <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" value="<?php echo htmlspecialchars($cliente['logradouro'] ?? ''); ?>" required>
+                                <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" value="<?php echo $logradouro; ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="complemento">Complemento</label>
-                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo htmlspecialchars($cliente['complemento'] ?? ''); ?>">
+                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo $complemento; ?>">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group input-full-width">
                                 <label for="bairro">Bairro</label>
-                                <input type="text" id="bairro" name="bairro" placeholder="Bairro" value="<?php echo htmlspecialchars($cliente['bairro'] ?? ''); ?>" required>
+                                <input type="text" id="bairro" name="bairro" placeholder="Bairro" value="<?php echo $bairro; ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="cep">CEP</label>
-                                <input type="text" id="cep" name="cep" placeholder="CEP" value="<?php echo htmlspecialchars($cliente['cep'] ?? ''); ?>" required>
+                                <input type="text" id="cep" name="cep" placeholder="CEP" value="<?php echo $cep; ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="cidade">Cidade</label>
-                                <input type="text" id="cidade" name="cidade" placeholder="Cidade" value="<?php echo htmlspecialchars($cliente['cidade'] ?? ''); ?>" required>
+                                <input type="text" id="cidade" name="cidade" placeholder="Cidade" value="<?php echo $cidade; ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="uf">UF</label>
-                                <input type="text" id="uf" name="uf" placeholder="UF" value="<?php echo htmlspecialchars($cliente['uf'] ?? ''); ?>" required>
+                                <input type="text" id="uf" name="uf" placeholder="UF" value="<?php echo $uf; ?>" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group input-full-width">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($cliente['email'] ?? ''); ?>" required>
+                                <input type="email" id="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
                             </div>
                         </div>
-
-                        <div class="table-buttons">
-                            <button id="clear-button" type="button"><i class="fas fa-trash"></i> Excluir</button>
-                            <button id="submit-button" type="submit" name="submit"><i class="fas fa-save"></i> Salvar</button>   
-                        </div>
+                        <input type="hidden" name ="id" value="<?php echo $id?>">
                     </form>
                 </div>
                 
