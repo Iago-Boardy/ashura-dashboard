@@ -2,38 +2,35 @@
 session_start(); 
 include("protect.php");
 
-    if (!empty($_GET["id"])) {
-        include_once("connection.php");
+if (!empty($_GET["id"])) {
+    include_once("connection.php");
 
-        $id = $_GET["id"];
+    $id = $_GET["id"];
 
-        $sqlSelect = "SELECT * FROM clientes 
-                      WHERE id = '$id'";
-        
-        $result = $conn-> query($sqlSelect); //Aqui tem que ver certinho, mas basicamente verificamos algo na connection conn
-        
-        if ($result->num_rows > 0) {
+    $sqlSelect = "SELECT * FROM clientes WHERE id = '$id'";
+    
+    $result = $conn->query($sqlSelect);
 
-            while ($row = $result->fetch_assoc($result)) {
-                $id = $row["id"];
-                $nome = $rowT["name"];
-                $idade = $row["idade"];
-                $logradouro = $row["logradouro"];
-                $complemento = $rowT["complemento"];
-                $bairro = $row["bairro"];
-                $cep = $row["cep"];
-                $cidade = $row["cidade"];
-                $uf = $row["uf"];
-                $email = $row["email"];
-            }
-
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $id = $row["id"];
+            $nome = $row["name"];
+            $idade = $row["idade"];
+            $logradouro = $row["logradouro"];
+            $complemento = $row["complemento"];
+            $bairro = $row["bairro"];
+            $cep = $row["cep"];
+            $cidade = $row["cidade"];
+            $uf = $row["uf"];
+            $email = $row["email"];
         }
-        else {
-            header("clientes.php");
-        }
-
+    } else {
+        header("Location: clientes.php");
+        exit();
     }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
