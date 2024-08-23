@@ -11,6 +11,7 @@
     $cidade = $_POST["cidade"];
     $uf = $_POST["uf"];
     $email = $_POST["email"];
+    $id = $_POST["id"];
 
     $sqlUpdate = "UPDATE usuarios
                   SET nome = '$nome', idade = '$idade', logadouro = '$logadouro', complemento = '$complemento', 

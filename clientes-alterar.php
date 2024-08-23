@@ -27,15 +27,12 @@ include("protect.php");
                 $email = $row["email"];
             }
 
-            
         }
         else {
             header("clientes.php");
         }
 
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +92,10 @@ include("protect.php");
                                 <p>Altere ou exclua os clientes a seguir:</p>
                             </div>
                             <div class="table-buttons">
-                                <button id="clear-button" type="button"><i class="fas fa-trash"></i> Excluir</button>
+                                <form id="delete-form" action="deleteClientes.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                    <button id="clear-button" type="submit" name="info"><i class="fas fa-trash"></i> Excluir</button>
+                                </form>
                                 <button id="submit-button" type="submit" name="update"><i class="fas fa-save"></i> Salvar</button>   
                             </div>
                         </div>
