@@ -11,12 +11,11 @@
     $cidade = $_POST["cidade"];
     $uf = $_POST["uf"];
     $email = $_POST["email"];
-    $id = $_POST["id"];
 
     $sqlUpdate = "UPDATE usuarios
                   SET nome = '$nome', idade = '$idade', logadouro = '$logadouro', complemento = '$complemento', 
                   bairro = '$bairro', cep = '$cep', cidade = '$cidade', uf = '$uf', email = '$email'
-                  WHERE id =  '$id'";
+                  WHERE idCliente =  '$id'";
 
     $result = $conn ->query($sqlUpdate);
   }

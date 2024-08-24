@@ -87,18 +87,18 @@ include("protect.php");
                                 $result = mysqli_query($conn, $sql);
 
                                 while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-                                    echo "<tr data-id='" . $row[0] . "'>"; 
+                                    echo "<tr>"; 
                                     for ($i = 0; $i < count($row); $i++) {
-                                        echo "<td>" . $row[$i] . "</td>";
+                                        echo "<td>" . htmlspecialchars($row[$i]) . "</td>";
                                     }
                                     // Adiciona o ID ao link de edição diretamente no HTML
-                                    echo '<td><a href="clientes-alterar.php?id=' . $row[0] . '" class="edit-link"><span class="status active"><i class="fas fa-edit"></i></span></a></td>';
+                                    echo '<td><a href="clientes-alterar.php?idCliente=' . $row[0] . '" class="edit-link"><span class="status active"><i class="fas fa-edit"></i></span></a></td>';
+
                                     echo "</tr>";
                                 }
                                 mysqli_close($conn);
                             ?>
-
-                        </tbody>
+                            </tbody>
                         </table>
                         <p>Informações diretas do DataBase - 2024.</p>
                     </div>
@@ -106,23 +106,5 @@ include("protect.php");
             </section>
         </main>
     </div>
-
-    <script>
-        document.querySelectorAll('tbody tr').forEach(row => {
-            row.addEventListener('dblclick', function() {
-                const id = this.getAttribute('data-id');
-                window.location.href = 'clientes-alterar.php?id=' + id;
-            });
-        });
-
-        document.querySelectorAll('.edit-link').forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                const row = this.closest('tr'); 
-                const id = row.getAttribute('data-id'); 
-                window.location.href = 'clientes-alterar.php?id=' + id; 
-            });
-        });
-    </script>
 </body>
 </html>

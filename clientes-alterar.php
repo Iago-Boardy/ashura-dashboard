@@ -2,35 +2,41 @@
 session_start(); 
 include("protect.php");
 
-if (!empty($_GET["id"])) {
-    include_once("connection.php");
+    if (!empty($_GET["idCliente"])) {
+        include_once("connection.php");
 
-    $id = $_GET["id"];
+        $id = $_GET["idCliente"];  
 
-    $sqlSelect = "SELECT * FROM clientes WHERE id = '$id'";
-    
-    $result = $conn->query($sqlSelect);
+        $sqlSelect = "SELECT * FROM clientes 
+                      WHERE idCliente = '$id'";
+        
+        $result = $conn-> query($sqlSelect); //Aqui tem que ver certinho, mas basicamente verificamos algo na connection conn
+        
+        if ($result->num_rows > 0) {
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $id = $row["id"];
-            $nome = $row["name"];
-            $idade = $row["idade"];
-            $logradouro = $row["logradouro"];
-            $complemento = $row["complemento"];
-            $bairro = $row["bairro"];
-            $cep = $row["cep"];
-            $cidade = $row["cidade"];
-            $uf = $row["uf"];
-            $email = $row["email"];
+            while ($row = $result->fetch_assoc($result)) {
+                $id = $row["idCliente"];
+                $nome = $rowT["nome"];
+                $idade = $row["idade"];
+                $logradouro = $row["logadouro"];
+                $complemento = $rowT["complemento"];
+                $bairro = $row["bairro"];
+                $cep = $row["cep"];
+                $cidade = $row["cidade"];
+                $uf = $row["uf"];
+                $email = $row["email"];
+            }
+
+            
         }
-    } else {
-        header("Location: clientes.php");
-        exit();
-    }
-}
-?>
+        else {
+            header("clientes.php");
+        }
 
+    }
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,10 +95,7 @@ if (!empty($_GET["id"])) {
                                 <p>Altere ou exclua os clientes a seguir:</p>
                             </div>
                             <div class="table-buttons">
-                                <form id="delete-form" action="deleteClientes.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                    <button id="clear-button" type="submit" name="info"><i class="fas fa-trash"></i> Excluir</button>
-                                </form>
+                                <button id="clear-button" type="button"><i class="fas fa-trash"></i> Excluir</button>
                                 <button id="submit-button" type="submit" name="update"><i class="fas fa-save"></i> Salvar</button>   
                             </div>
                         </div>
