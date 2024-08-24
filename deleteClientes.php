@@ -1,29 +1,33 @@
 <?php
+include_once("connection.php");
 
+if (!empty($_POST["delete"])) {
+    $id = $_POST["id"];
 
-  if(!empty($_POST["info"])) {
-    $id = $_POST["idCliente"];
+   
+    if (!empty($id)) {
+       
+        $sqlSelect = "SELECT * FROM clientes WHERE idCliente = ?";
+        
+        if ($stmt = $conn->prepare($sqlSelect)) {
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-    include_once("connection.php");
+            if ($result->num_rows > 0) {
+                $sqlDelete = "DELETE FROM clientes WHERE idCliente = ?";
+                
+                if ($stmt = $conn->prepare($sqlDelete)) {
+                    $stmt->bind_param("i", $id);
+                    $stmt->execute();
+                }
+            }
 
-      $id = $_GET["id"];
+            $stmt->close();
+        }
+    }
 
-      $sqlSelect = "SELECT * FROM clientes 
-                    WHERE idCliente = '$id'";
-      
-      $result = $conn-> query($sqlSelect); //Aqui tem que ver certinho, mas basicamente verificamos algo na connection conn
-      
-      if ($result->num_rows > 0) {
-
-        $sqlDelete = "DELETE FROM clientes
-                      WHERE idCliente = '$id'";
-
-        $resultDelete = $conn-> query($sqlDelete);
-      }
-      
-      header("Location: clientes.php");
-
-  }
-
-
+    header("Location: clientes.php");
+    exit(); 
+}
 ?>

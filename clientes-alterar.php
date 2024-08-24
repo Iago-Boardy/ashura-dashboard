@@ -2,40 +2,34 @@
 session_start(); 
 include("protect.php");
 
-    if (!empty($_GET["idCliente"])) {
-        include_once("connection.php");
+if (!empty($_GET["idCliente"])) {
+    include_once("connection.php");
 
-        $id = $_GET["idCliente"];  
+    $id = $_GET["idCliente"];  
 
-        $sqlSelect = "SELECT * FROM clientes 
-                      WHERE idCliente = '$id'";
-        
-        $result = $conn-> query($sqlSelect); //Aqui tem que ver certinho, mas basicamente verificamos algo na connection conn
-        
-        if ($result->num_rows > 0) {
+    $sqlSelect = "SELECT * FROM clientes WHERE idCliente = '$id'";
+    
+    $result = $conn->query($sqlSelect); 
 
-            while ($row = $result->fetch_assoc($result)) {
-                $id = $row["idCliente"];
-                $nome = $rowT["nome"];
-                $idade = $row["idade"];
-                $logradouro = $row["logadouro"];
-                $complemento = $rowT["complemento"];
-                $bairro = $row["bairro"];
-                $cep = $row["cep"];
-                $cidade = $row["cidade"];
-                $uf = $row["uf"];
-                $email = $row["email"];
-            }
+    if ($result->num_rows > 0) {
 
-            
+        while ($row = $result->fetch_assoc()) { 
+            $id = $row["idCliente"];
+            $nome = $row["nome"];
+            $idade = $row["idade"];
+            $logadouro = $row["logadouro"]; 
+            $complemento = $row["complemento"];
+            $bairro = $row["bairro"];
+            $cep = $row["cep"];
+            $cidade = $row["cidade"];
+            $uf = $row["uf"];
+            $email = $row["email"];
         }
-        else {
-            header("clientes.php");
-        }
-
+    } else {
+        header("Location: clientes.php"); 
+        exit();
     }
-
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +70,7 @@ include("protect.php");
             <header class="header">
                 <input type="text" placeholder="Search...">
                 <div class="dropdown">
-                    <button class="dropbtn"><i class="fas fa-user"></i> </button>
+                    <button class="dropbtn"><i class="fas fa-user"></i></button>
                     <div class="dropdown-content">
                         <a href="usuario.php"><i class="fas fa-cog"></i>Configurações</a>
                         <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
@@ -88,67 +82,69 @@ include("protect.php");
                 <a href="clientes.php" class="back-button"><i class="fas fa-arrow-left"></i></a>
                 <div class="form-container">
                     <form id="client-form" action="saveEditClientes.php" method="POST">
-
                         <div class="intro-content">
                             <div class="intro-text">
                                 <h1>Alterar Clientes</h1>
                                 <p>Altere ou exclua os clientes a seguir:</p>
                             </div>
                             <div class="table-buttons">
-                                <button id="clear-button" type="button"><i class="fas fa-trash"></i> Excluir</button>
                                 <button id="submit-button" type="submit" name="update"><i class="fas fa-save"></i> Salvar</button>   
                             </div>
                         </div>
-                
-            
+
                         <div class="form-row">
                             <div class="form-group label-full-width spacing">
                                 <label for="name">Nome</label>
-                                <input type="text" id="name" name="name" placeholder="Nome" value="<?php echo $nome; ?>" required>
+                                <input type="text" id="name" name="name" placeholder="Nome" value="<?php echo htmlspecialchars($nome); ?>" required>
                             </div>
                             <div class="form-group label-small">
                                 <label for="idade">Idade</label>
-                                <input type="number" id="idade" name="idade" placeholder="Idade" value="<?php echo $idade; ?>" required>
+                                <input type="number" id="idade" name="idade" placeholder="Idade" value="<?php echo htmlspecialchars($idade); ?>" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group input-full-width">
                                 <label for="logradouro">Logradouro</label>
-                                <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" value="<?php echo $logradouro; ?>" required>
+                                <input type="text" id="logradouro" name="logadouro" placeholder="Logradouro" value="<?php echo htmlspecialchars($logadouro); ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="complemento">Complemento</label>
-                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo $complemento; ?>">
+                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo htmlspecialchars($complemento); ?>">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group input-full-width">
                                 <label for="bairro">Bairro</label>
-                                <input type="text" id="bairro" name="bairro" placeholder="Bairro" value="<?php echo $bairro; ?>" required>
+                                <input type="text" id="bairro" name="bairro" placeholder="Bairro" value="<?php echo htmlspecialchars($bairro); ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="cep">CEP</label>
-                                <input type="text" id="cep" name="cep" placeholder="CEP" value="<?php echo $cep; ?>" required>
+                                <input type="text" id="cep" name="cep" placeholder="CEP" value="<?php echo htmlspecialchars($cep); ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="cidade">Cidade</label>
-                                <input type="text" id="cidade" name="cidade" placeholder="Cidade" value="<?php echo $cidade; ?>" required>
+                                <input type="text" id="cidade" name="cidade" placeholder="Cidade" value="<?php echo htmlspecialchars($cidade); ?>" required>
                             </div>
                             <div class="form-group input-full-width">
                                 <label for="uf">UF</label>
-                                <input type="text" id="uf" name="uf" placeholder="UF" value="<?php echo $uf; ?>" required>
+                                <input type="text" id="uf" name="uf" placeholder="UF" value="<?php echo htmlspecialchars($uf); ?>" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group input-full-width">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
+                                <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email); ?>" required>
                             </div>
                         </div>
-                        <input type="hidden" name ="id" value="<?php echo $id?>">
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+                    </form>
+
+                    
+                    <form id="delete-form" action="deleteClientes.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+                        <button id="clear-button" type="submit" name="delete" onclick="return confirm('Tem certeza de que deseja excluir este cliente?');"><i class="fas fa-trash"></i> Excluir</button>
                     </form>
                 </div>
-                
             </section>
         </main>
     </div>
