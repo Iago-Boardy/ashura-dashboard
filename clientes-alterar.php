@@ -1,10 +1,10 @@
 <?php
+include_once("connection.php");
+
 session_start(); 
 include("protect.php");
 
 if (!empty($_GET["idCliente"])) {
-    include_once("connection.php");
-
     $id = $_GET["idCliente"];  
 
     $sqlSelect = "SELECT * FROM clientes WHERE idCliente = '$id'";
