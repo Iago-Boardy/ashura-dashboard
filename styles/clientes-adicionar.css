@@ -189,17 +189,14 @@ nav li a:hover, nav li.active a {
 
 .section-1 h1 {
     font-size: 32px;
-    margin-left: 20px;
 }
 
-.section-1 p {
-    margin-left: 20px;
-}
 
 .intro-content {
     display: flex;
     justify-content: space-between;
     align-items: end;
+    margin-bottom: 20px;
 }
 
 .table-buttons {
