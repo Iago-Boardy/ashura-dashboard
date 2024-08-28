@@ -78,17 +78,29 @@ if (!empty($_GET["idCliente"])) {
                 </div>
             </header>
 
+
             <section class="section-1">
                 <a href="clientes.php" class="back-button"><i class="fas fa-arrow-left"></i></a>
                 <div class="form-container">
                     <form id="client-form" action="saveEditClientes.php" method="POST">
+                        
                         <div class="intro-content">
                             <div class="intro-text">
                                 <h1>Alterar Clientes</h1>
                                 <p>Altere ou exclua os clientes a seguir:</p>
                             </div>
+
                             <div class="table-buttons">
-                                <button id="submit-button" type="submit" name="update"><i class="fas fa-save"></i> Salvar</button>   
+
+                            <a href="deleteClientes.php?id=<?php echo $id; ?>" id="submit-a" 
+                                onclick="return confirm('Tem certeza de que deseja excluir este cliente?');">
+                                <i class="fas fa-trash"></i> Excluir
+                            </a>
+
+                            <button id="submit-button" type="submit" name="update" class="styled-button">
+                                <i class="fas fa-save"></i> Salvar
+                            </button>
+
                             </div>
                         </div>
 
@@ -140,10 +152,6 @@ if (!empty($_GET["idCliente"])) {
                     </form>
 
                     
-                    <form id="delete-form" action="deleteClientes.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-                        <button id="clear-button" type="submit" name="delete" onclick="return confirm('Tem certeza de que deseja excluir este cliente?');"><i class="fas fa-trash"></i> Excluir</button>
-                    </form>
                 </div>
             </section>
         </main>

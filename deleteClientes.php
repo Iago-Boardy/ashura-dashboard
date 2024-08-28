@@ -1,8 +1,9 @@
 <?php
 include_once("connection.php");
+session_start(); 
 
-if (!empty($_POST["delete"])) {
-    $id = $_POST["id"];
+if (!empty($_GET["id"])) {
+    $id = $_GET["id"];
 
    
     if (!empty($id)) {
