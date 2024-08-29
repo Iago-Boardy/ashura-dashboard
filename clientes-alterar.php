@@ -91,10 +91,6 @@ if (!empty($_GET["idCliente"])) {
                             </div>
 
                             <div class="table-buttons">
-<<<<<<< HEAD
-=======
-
->>>>>>> 19f78c5bf6b8a8d58ae3861592c5ac6321e3f3bf
                             <a href="deleteClientes.php?id=<?php echo $id; ?>" id="submit-a" 
                                 onclick="return confirm('Tem certeza de que deseja excluir este cliente?');">
                                 <i class="fas fa-trash"></i> Excluir
@@ -102,12 +98,7 @@ if (!empty($_GET["idCliente"])) {
 
                             <button id="submit-button" type="submit" name="update" class="styled-button">
                                 <i class="fas fa-save"></i> Salvar
-<<<<<<< HEAD
                             </button>   
-=======
-                            </button>
-
->>>>>>> 19f78c5bf6b8a8d58ae3861592c5ac6321e3f3bf
                             </div>
 
                         </div>
