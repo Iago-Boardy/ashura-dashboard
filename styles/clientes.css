@@ -277,6 +277,14 @@ nav li a:hover, nav li.active a {
     font-size: 14px;
 }
 
+.right {
+    width: 70px;
+}
+
+.table-correction {
+    width: 270px;
+}
+
 
 
 .styled-button {

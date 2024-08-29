@@ -11,6 +11,7 @@ if (isset($_POST["update"])) {
     $cidade = $_POST["cidade"];
     $uf = $_POST["uf"];
     $email = $_POST["email"];
+    
     $id = $_POST["id"];
 
     // Prepara a consulta de atualização
