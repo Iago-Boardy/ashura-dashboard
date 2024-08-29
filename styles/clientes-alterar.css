@@ -314,6 +314,7 @@ button[type="submit"]:hover {
     display: block;
 }
 
+<<<<<<< HEAD
 /* Estilos para botões personalizados */
 .styled-button {
     padding: 10px 20px;
@@ -350,3 +351,6 @@ button[type="submit"]:hover {
 #submit-a i {
     font-size: 12px;
 }
+=======
+
+>>>>>>> 19f78c5bf6b8a8d58ae3861592c5ac6321e3f3bf
