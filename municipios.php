@@ -10,10 +10,10 @@ $pagina = $pagina ? $pagina : 1;
 
 $inicio = ($pagina - 1) * $qnt_result_pg;
 
-$sql = "SELECT * FROM funcionario LIMIT $inicio, $qnt_result_pg";
+$sql = "SELECT * FROM municipios LIMIT $inicio, $qnt_result_pg";
 $result = mysqli_query($conn, $sql);
 
-$sql_total = "SELECT COUNT(*) AS total FROM funcionario";
+$sql_total = "SELECT COUNT(*) AS total FROM municipios";
 $result_total = mysqli_query($conn, $sql_total);
 $row_total = mysqli_fetch_assoc($result_total);
 $total_clientes = $row_total['total'];
@@ -22,6 +22,7 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
 
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -46,9 +47,9 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
                 <ul>
                     <li><a href="menu.php"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="clientes.php"><i class="fas fa-users"></i> Clientes <span class="badge">6</span></a></li>
-                    <li class="active"><a href="funcionarios.php"><i class="fas fa-user-tie"></i> Funcionários</a></li>
+                    <li><a href="funcionarios.php"><i class="fas fa-user-tie"></i> Funcionários</a></li>
                     <li><a href="trabalhos.php"><i class="fas fa-briefcase"></i> Trabalhos</a></li>
-                    <li><a href="municipios.php"><i class="fas fa-city"></i> Municípios</a></li>
+                    <li class="active"><a href="municipios.php"><i class="fas fa-city"></i> Municípios</a></li>
                     <li><a href="projetos.php"><i class="fas fa-project-diagram"></i> Projetos</a></li>
                     <li><a href="beneficios.php"><i class="fas fa-gift"></i> Benefícios</a></li>
                 </ul>
@@ -73,26 +74,24 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
             <section class="section-1">
                 <div class="intro-content">
                     <div class="intro-text">
-                        <h1>Funcionários</h1>
-                        <p>Os funcionarios são de extrema importância! Gerencie seus funcionarios aqui!</p>
+                        <h1>Municípios</h1>
+                        <p>Os municípios são de extrema importância! Gerencie seus municípios aqui!</p>
                     </div>
                     <div class="table-buttons">
-                        <a href="funcionarios.php"><button><i class="fa fa-sync"></i> Atualizar</button></a>
-                        <a href="funcionarios-adicionar.php"><button><i class="fa fa-plus-circle"></i> Adicionar</button></a>
+                        <a href="municipios.php"><button><i class="fa fa-sync"></i> Atualizar</button></a>
+                        <a href="municipios-adicionar.php"><button><i class="fa fa-plus-circle"></i> Adicionar</button></a>
                     </div>
                 </div>
-                
+
                 <div class="table-container">
                     <div class="product-table">
                         <table>
-                            
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nome do Funcionário</th>
-                                    <th>Id do Trabalho</th>
+                                    <th>Cidade</th>
+                                    <th>Estado (UF)</th>
                                     <th class="right">Edição</th>
-                                    
                                 </tr>
                             </thead>
                             
@@ -103,9 +102,7 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
                                     for ($i = 0; $i < count($row); $i++) {
                                         echo "<td>" . htmlspecialchars($row[$i]) . "</td>";
                                     }
-                                    // id link para puxar no get dps
-                                    echo '<td><a href="funcionarios-alterar.php?idFuncionario=' . $row[0] . '" class="edit-link"><span class="status active"><i class="fas fa-edit"></i></span></a></td>';
-
+                                    echo '<td><a href="municipios-alterar.php?idMunicipio=' . $row[0] . '" class="edit-link"><span class="status active"><i class="fas fa-edit"></i></span></a></td>';
                                     echo "</tr>";
                                 }
                                 mysqli_close($conn);
@@ -116,23 +113,20 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
                         <div class="footer">
                             <div class="pagination">
                                 <?php
-                                // botao que leva pra pagina anterior
                                 if ($pagina > 1) {
-                                    echo '<a href="funcionarios.php?pagina=' . ($pagina - 1) . '" class="pagination-link">Anterior</a>';
+                                    echo '<a href="municipios.php?pagina=' . ($pagina - 1) . '" class="pagination-link">Anterior</a>';
                                 }
 
-                                // botoes das paginas que temos enumeradas
                                 for ($i = 1; $i <= $quantidade_pg; $i++) {
                                     if ($i == $pagina) {
                                         echo '<span class="pagination-link current-page">' . $i . '</span>';
                                     } else {
-                                        echo '<a href="funcionarios.php?pagina=' . $i . '" class="pagination-link">' . $i . '</a>';
+                                        echo '<a href="municipios.php?pagina=' . $i . '" class="pagination-link">' . $i . '</a>';
                                     }
                                 }
 
-                                // botao para prox pagina
                                 if ($pagina < $quantidade_pg) {
-                                    echo '<a href="funcionarios.php?pagina=' . ($pagina + 1) . '" class="pagination-link">Próxima</a>';
+                                    echo '<a href="municipios.php?pagina=' . ($pagina + 1) . '" class="pagination-link">Próxima</a>';
                                 }
                                 ?>
                             </div>
@@ -140,14 +134,14 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
                                 <p>Informações diretas do DataBase - 2024.</p>
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
             </section>
+
+
+
         </main>
     </div>
-
 
 </body>
 </html>
