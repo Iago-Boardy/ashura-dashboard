@@ -145,6 +145,7 @@ $quantidade_pg = ceil($total_clientes / $qnt_result_pg);
                     </div>
                 </div>
             </section>
+            
         </main>
     </div>
 
