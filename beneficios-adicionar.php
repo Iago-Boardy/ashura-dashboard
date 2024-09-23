@@ -1,31 +1,26 @@
-<?php 
-include_once("connection.php");
-
+<?php
 session_start(); 
 include("protect.php");
 
-if (!empty($_GET["idBeneficio"])) {
-    $id = $_GET["idBeneficio"];  
+if (isset($_POST["submit"])) {
 
-    $sqlSelect = "SELECT * FROM beneficio WHERE idBeneficio = '$id'";
-    
-    $result = $conn->query($sqlSelect); 
+    include_once("connection.php");
 
-    if ($result->num_rows > 0) {
+    $id_funcionario = $_POST["name"];
+    $id_projeto = $_POST["trabalho"];
+   
 
-        while ($row = $result->fetch_assoc()) { 
-            $id = $row["idBeneficio"];
-            $id_funcionario = $row["idFuncionario"];
-            $id_projeto = $row["idProjeto"];
-        }
+    $stmt = $conn->prepare("INSERT INTO beneficio (idFuncionario, idProjeto) VALUES (?, ?)");
+    $stmt->bind_param("si", $id_funcionario, $id_projeto);
+    $result = $stmt->execute();
+
+    if ($result) {
+        header("Location: beneficios.php");
     } else {
-        header("Location: beneficios.php"); 
-        exit();
+        $error_message = "Ocorreu um erro ao criar a conta: " . $conn->error;
     }
 }
-
 ?>
-
 
 
 
@@ -35,7 +30,7 @@ if (!empty($_GET["idBeneficio"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Dashboard</title>
-    <link rel="stylesheet" href="styles/clientes-alterar.css">
+    <link rel="stylesheet" href="styles/clientes-adicionar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +50,7 @@ if (!empty($_GET["idBeneficio"])) {
                     <li><a href="trabalhos.php"><i class="fas fa-briefcase"></i> Trabalhos</a></li>
                     <li><a href="municipios.php"><i class="fas fa-city"></i> Municípios</a></li>
                     <li><a href="projetos.php"><i class="fas fa-project-diagram"></i> Projetos</a></li>
-                    <li class="active"><a href="beneficios.php"><i class="fas fa-gift"></i> Benefícios</a></li>
+                    <li  class="active"><a href="beneficios.php"><i class="fas fa-gift"></i> Benefícios</a></li>
                 </ul>
             </nav>
             <div class="spacer"></div>
@@ -77,39 +72,32 @@ if (!empty($_GET["idBeneficio"])) {
 
             <section class="section-1">
                 <a href="beneficios.php" class="back-button"><i class="fas fa-arrow-left"></i></a>
-
                 <div class="form-container">
-                    <form id="client-form" action="saveEditBeneficios.php" method="POST">
-                        
+                    <form id="client-form" action="beneficios-adicionar.php" method="POST">
+
                         <div class="intro-content">
                             <div class="intro-text">
-                                <h1>Alterar Benefícios</h1>
-                                <p>O nome do projeto e funcionario são puxados pelo ID. Altere ou exclua os benefícios a seguir:</p>
+                                <h1>Adicionar Benefícios</h1>
+                                <p>O nome do projeto e funcionario são puxados pelo ID. Insira as informações necessárias para adicionar um benefício novo:</p>
                             </div>
-
+                            
                             <div class="table-buttons">
-                                <a href="deleteBeneficios.php?id=<?php echo $id; ?>" id="submit-a" 
-                                onclick="return confirm('Tem certeza de que deseja excluir este benefício?');">
-                                <i class="fas fa-trash"></i> Excluir
-                                </a>
-
-                                <button id="submit-button" type="submit" name="update" class="styled-button">
-                                    <i class="fas fa-save"></i> Salvar
-                                </button>   
+                                <button id="clear-button" type="button"><i class="fas fa-eraser"></i> Limpar</button>
+                                <button id="submit-button" type="submit" name="submit"><i class="fa fa-plus-circle"></i> Adicionar</button>
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group label-full-width spacing">
-                                <label for="id_funcionario">Id Funcionário</label>
-                                <input type="number" id="id_funcionario" name="id_funcionario" placeholder="Id do Funcionário" value="<?php echo htmlspecialchars($id_funcionario); ?>" required>
+                                <label for="name">Id funcionário</label>
+                                <input type="number" id="name" name="name" placeholder="Id" required>
                             </div>
                             <div class="form-group label-small">
-                                <label for="id_projeto">Id do Benefício</label>
-                                <input type="number" id="id_projeto" name="id_projeto" placeholder="Id do Projeto" value="<?php echo htmlspecialchars($id_projeto); ?>" required>
+                                <label for="trabalho">Id do projeto</label>
+                                <input type="number" id="trabalho" name="trabalho" placeholder="Id" required>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+
                     </form>
                 </div>
             </section>
@@ -117,5 +105,14 @@ if (!empty($_GET["idBeneficio"])) {
         </main>
     </div>
 
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            document.getElementById('client-form').submit();
+        });
+
+        document.getElementById('clear-button').addEventListener('click', function() {
+            document.getElementById('client-form').reset();
+        });
+    </script>
 </body>
 </html>

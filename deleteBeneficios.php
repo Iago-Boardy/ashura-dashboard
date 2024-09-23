@@ -8,7 +8,7 @@ if (!empty($_GET["id"])) {
    
     if (!empty($id)) {
        
-        $sqlSelect = "SELECT * FROM funcionario WHERE idFuncionario = ?";
+        $sqlSelect = "SELECT * FROM beneficio WHERE idBeneficio = ?";
         
         if ($stmt = $conn->prepare($sqlSelect)) {
             $stmt->bind_param("i", $id);
@@ -16,7 +16,7 @@ if (!empty($_GET["id"])) {
             $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
-                $sqlDelete = "DELETE FROM funcionario WHERE idFuncionario = ?";
+                $sqlDelete = "DELETE FROM beneficio WHERE idBeneficio = ?";
                 
                 if ($stmt = $conn->prepare($sqlDelete)) {
                     $stmt->bind_param("i", $id);
@@ -28,7 +28,7 @@ if (!empty($_GET["id"])) {
         }
     }
 
-    header("Location: funcionarios.php");
+    header("Location: beneficios.php");
     exit(); 
 }
 ?>
