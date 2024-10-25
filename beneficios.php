@@ -91,6 +91,7 @@ $quantidade_pg = ceil($total_beneficios / $qnt_result_pg);
                     </div>
                     <div class="table-buttons">
                         <a href="beneficios.php"><button><i class="fa fa-sync"></i> Atualizar</button></a>
+                        <a href="#" id="pdfDownload"><button><i class="fas fa-file-pdf"></i> Gerar PDF</button></a>
                         <a href="beneficios-adicionar.php"><button><i class="fa fa-plus-circle"></i> Adicionar</button></a>
                     </div>
                 </div>
@@ -153,4 +154,27 @@ $quantidade_pg = ceil($total_beneficios / $qnt_result_pg);
     </div>
 
 </body>
+<script>
+document.getElementById("pdfDownload").addEventListener("click", function(event) {
+    event.preventDefault(); 
+
+    
+    fetch('generate_pdf_beneficios.php', {
+        method: 'POST',
+    })
+    .then(response => response.blob()) 
+    .then(blob => {
+        
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'beneficios.pdf'; 
+        document.body.appendChild(a);
+        a.click(); 
+        window.URL.revokeObjectURL(url); 
+    })
+    .catch(err => console.error('Erro ao baixar o PDF:', err));
+});
+</script>
 </html>
