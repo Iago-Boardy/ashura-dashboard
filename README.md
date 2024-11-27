@@ -1,6 +1,6 @@
 <h1 align="center">🗃️ Ashura Dashboard</h1>
 
-<p align="center">Welcome to the Ashura Dashboard project! This repository features a CRUD application designed for managing MySQL data. The dashboard provides an intuitive interface to create, read, update, and delete records, with robust authentication and metrics visualization. (CURRENTLY IN DEVELOPMENT)</p>
+<p align="center">Welcome to the Ashura Dashboard project! This repository features a CRUD application designed for managing MySQL data. The dashboard provides an intuitive interface to create, read, update, and delete records, with robust authentication and metrics visualization. To the application work well, you should unzip the zipped domPDF.</p>
 
 ## 📂 Contents
 

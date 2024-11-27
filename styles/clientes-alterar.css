@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Estilos gerais */
 body {
     margin: 0;
@@ -350,3 +351,357 @@ button[type="submit"]:hover {
 #submit-a i {
     font-size: 12px;
 }
+=======
+/* Estilos gerais */
+body {
+    margin: 0;
+    font-family: "Mulish", sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Estilos da barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brand {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.brand h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+nav li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+nav li a:hover, nav li.active a {
+    background-color: #f0f0f0;
+}
+
+.badge {
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.upgrade {
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.upgrade a {
+    text-decoration: none;
+    color: #FFFF;
+}
+
+.upgrade button {
+    font-family: "Mulish", sans-serif;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.upgrade button:hover {
+    background-color: #343232;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header input {
+    padding: 10px;
+    width: 700px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.user-icon {
+    font-size: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilos do dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: auto; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content i {
+    margin-right: 5px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    gap: 4px;
+    right: 0;
+}
+
+.dropbtn {
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+/* Estilos do conteúdo principal */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+}
+
+/* Estilos das seções */
+.section-1 {
+    background-color: #fff;
+    padding: 40px; /* Adicionado padding nas laterais */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.back-button {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.back-button:hover {
+    color: #998a8a;
+}
+
+.section-1 h1 {
+    font-size: 32px;
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 20px;
+}
+
+.table-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+/* Estilos do formulário */
+.form-container {
+    margin: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+label {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.form-group.label-full-width {
+    flex: 0 0 70%;
+}
+
+.form-group.label-small {
+    flex: 0 0 29%;
+}
+
+.form-group.input-full-width {
+    flex: 1;
+}
+
+.form-group input {
+    padding: 7px 10px;
+    border: 1px solid #cdc6c6;
+    border-radius: 8px;
+    font-family: "Mulish", sans-serif; /* Garante a fonte Mulish */
+    font-size: 16px;
+}
+
+button {
+    font-family: "Mulish", sans-serif;
+}
+
+button[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Mulish", sans-serif; 
+}
+
+button[type="button"]:hover {
+    background-color: #4f4c4c;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Mulish", sans-serif; 
+}
+
+button[type="submit"]:hover {
+    background-color: #4f4c4c;
+}
+
+/* Estilos para mensagens de erro e sucesso */
+.error-message {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; 
+    color: #fff; 
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: none; 
+}
+
+.error-message.show {
+    display: block;
+}
+
+.good-message {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #26bc46; 
+    color: #fff; 
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: none; 
+}
+
+.good-message.show {
+    display: block;
+}
+
+/* Estilos para botões personalizados */
+.styled-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Mulish", sans-serif; 
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.styled-button:hover {
+    background-color: #4f4c4c;
+}
+
+#submit-a {
+    font-family: "Mulish", sans-serif;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#submit-a:hover {
+    background-color: #4f4c4c;
+}
+
+#submit-a i {
+    font-size: 12px;
+}
+>>>>>>> 2f67f0f75546b65789bb4439b8d834cd7ebc97c6
