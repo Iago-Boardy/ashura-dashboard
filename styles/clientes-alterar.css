@@ -189,17 +189,13 @@ nav li a:hover, nav li.active a {
 
 .section-1 h1 {
     font-size: 32px;
-    margin-left: 20px;
-}
-
-.section-1 p {
-    margin-left: 20px;
 }
 
 .intro-content {
     display: flex;
     justify-content: space-between;
     align-items: end;
+    margin-bottom: 20px;
 }
 
 .table-buttons {
@@ -208,7 +204,6 @@ nav li a:hover, nav li.active a {
     gap: 10px;
     margin-right: 20px;
 }
-
 
 /* Estilos do formulário */
 .form-container {
@@ -231,7 +226,6 @@ label {
     font-weight: 700;
     font-size: 16px;
 }
-
 
 .form-group.label-full-width {
     flex: 0 0 70%;
@@ -285,7 +279,7 @@ button[type="submit"]:hover {
     background-color: #4f4c4c;
 }
 
-
+/* Estilos para mensagens de erro e sucesso */
 .error-message {
     position: fixed;
     bottom: 10px;
@@ -318,4 +312,41 @@ button[type="submit"]:hover {
 
 .good-message.show {
     display: block;
+}
+
+/* Estilos para botões personalizados */
+.styled-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Mulish", sans-serif; 
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.styled-button:hover {
+    background-color: #4f4c4c;
+}
+
+#submit-a {
+    font-family: "Mulish", sans-serif;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#submit-a:hover {
+    background-color: #4f4c4c;
+}
+
+#submit-a i {
+    font-size: 12px;
 }

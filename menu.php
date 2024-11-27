@@ -27,6 +27,7 @@ include("protect.php");
             <nav>
                 <ul>
                     <li class="active"><a href="menu.php"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="graficos.php"><i class="fas fa-chart-pie"></i> Gráficos</a></li>
                     <li><a href="clientes.php"><i class="fas fa-users"></i> Clientes <span class="badge">6</span></a></li>
                     <li><a href="funcionarios.php"><i class="fas fa-user-tie"></i> Funcionários</a></li>
                     <li><a href="trabalhos.php"><i class="fas fa-briefcase"></i> Trabalhos</a></li>

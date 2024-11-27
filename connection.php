@@ -6,7 +6,7 @@
     $conn = mysqli_connect($localhost, $user, $password, $banco);
 
     if (!$conn) {
-        header("Location: menu.html");
+        header("Location: menu.php");
     }
 
 ?>
